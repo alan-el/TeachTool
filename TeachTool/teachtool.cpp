@@ -1,10 +1,11 @@
 #include "stdafx.h"
 #include "teachtool.h"
 #include "java_methods.h"
+#include "brailletranslate.h"
 
 #include <QAction>
 #include <QMenuBar>
-
+#include <QAxObject>
 TeachTool::TeachTool(QWidget *parent)
 	: QMainWindow(parent)
 {
@@ -24,14 +25,14 @@ void TeachTool::onButtonTextExtract()
 	std::string str = pathname.toStdString();
 	const char *ch = str.c_str();
 
-	const char *p = ch + str_length - 1 - 4;
-	if(strcmp(p + 1, ".ppt") == 0)
+	const char *tail = (ch + str_length - 1) - 4;
+	if(strcmp(tail + 1, ".ppt") == 0)
 	{
 		JavaMethods::createJVM();
 		JavaMethods::pptTextExtractor(ch, false);
 		JavaMethods::destroyJVM();
 	}
-	else if(strcmp(p, ".pptx") == 0)
+	else if(strcmp(tail, ".pptx") == 0)
 	{
 		JavaMethods::createJVM();
 		JavaMethods::pptTextExtractor(ch, true);
@@ -41,6 +42,24 @@ void TeachTool::onButtonTextExtract()
 
 void TeachTool::onButtonPictExtract()
 {
+	/* Call Java method to Extract Pics in PPT*/
+	int str_length = pathname.length();
+	std::string str = pathname.toStdString();
+	const char *ch = str.c_str();
+
+	const char *tail = (ch + str_length - 1) - 4;
+	if(strcmp(tail + 1, ".ppt") == 0)
+	{
+		JavaMethods::createJVM();
+		JavaMethods::pptPictExtractor(ch, false);
+		JavaMethods::destroyJVM();
+	}
+	else if(strcmp(tail, ".pptx") == 0)
+	{
+		JavaMethods::createJVM();
+		JavaMethods::pptPictExtractor(ch, true);
+		JavaMethods::destroyJVM();
+	}
 }
 
 void TeachTool::onActionOpenTriggered()
@@ -53,6 +72,7 @@ void TeachTool::onActionOpenTriggered()
 	 *	
 	 *	TODO Get Slides Change events (Signals)
 	 */
+
 	axWidget->setControl(pathname);
 
 	buttonTextExtract->setEnabled(true);
@@ -69,10 +89,15 @@ void TeachTool::onActionOpenTriggered()
 	}*/
 	
 }
-
+void TeachTool::onActionTransTriggered()
+{
+	BrailleTranslate *transWindow = new BrailleTranslate();
+	transWindow->show();
+}
 void TeachTool::createActions()
 {
-	m_actionOpen = new QAction(tr("&Open..."), this);
+	m_actionOpen = new QAction(tr("&Open"), this);
+	m_actionTrans = new QAction(tr("&Translate"), this);
 	m_actionClose = new QAction(tr("Close"), this);
 	m_actionQuit = new QAction(tr("&Quit"), this);
 
@@ -81,6 +106,7 @@ void TeachTool::createActions()
 	m_actionAbout = new QAction(tr("&About..."), this);
 
 	connect(m_actionOpen, SIGNAL(triggered()), SLOT(onActionOpenTriggered()));
+	connect(m_actionTrans, SIGNAL(triggered()), SLOT(onActionTransTriggered()));
 
 	/*
 	char dir[1000];
@@ -94,7 +120,9 @@ void TeachTool::createActions()
 void TeachTool::createMenuBar()
 {
 	QMenu *fileMenu = menuBar()->addMenu(tr("&File"));
+	QMenu *toolMenu = menuBar()->addMenu(tr("&Tool"));
 	fileMenu->addAction(m_actionOpen);
+	toolMenu->addAction(m_actionTrans);
 }
 
 void TeachTool::setButtons()

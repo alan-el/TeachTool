@@ -32,9 +32,6 @@
     <ResourceCompile Include="TeachTool.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
-    <ClInclude Include="stdafx.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -49,20 +46,32 @@
     <ClCompile Include="java_methods.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <QtMoc Include="teachtool.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
+    <ClCompile Include="brailletranslate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="teachtool.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="brailletranslate.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="java_methods.h">
+    <ClInclude Include="include\java_methods.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="include\teachtool.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="brailletranslate.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
 </Project>
