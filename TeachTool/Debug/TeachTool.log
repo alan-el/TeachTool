@@ -1,5 +1,0 @@
-﻿brailletranslate.obj : error LNK2019: 无法解析的外部符号 __imp__lou_translateString@32，该符号在函数 "private: void __thiscall BrailleTranslate::onButtonTranslateTriggered(void)" (?onButtonTranslateTriggered@BrailleTranslate@@AAEXXZ) 中被引用
-java_methods.obj : error LNK2019: 无法解析的外部符号 __imp__JNI_CreateJavaVM@12，该符号在函数 "public: static void __cdecl JavaMethods::createJVM(void)" (?createJVM@JavaMethods@@SAXXZ) 中被引用
-D:\Qt_workspace\src\TeachTool\TeachTool\lib\liblouis\liblouis-20.lib : warning LNK4272: 库计算机类型“x64”与目标计算机类型“x86”冲突
-D:\jdk-17.0.3.1\lib\jvm.lib : warning LNK4272: 库计算机类型“x64”与目标计算机类型“x86”冲突
-D:\Qt_workspace\src\TeachTool\Debug\TeachTool.exe : fatal error LNK1120: 2 个无法解析的外部命令

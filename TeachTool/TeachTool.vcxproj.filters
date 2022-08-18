@@ -70,7 +70,7 @@
     <QtMoc Include="include\teachtool.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="brailletranslate.h">
+    <QtMoc Include="include\brailletranslate.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

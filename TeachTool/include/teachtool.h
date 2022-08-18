@@ -14,8 +14,8 @@ public:
 private slots:
 	void onActionOpenTriggered();
 	void onActionTransTriggered();
-	void onButtonTextExtract();
-	void onButtonPictExtract();
+	void onButtonSlideExtract();
+	void onButtonSlideTransform();
 
 private:
 	void createActions();
@@ -23,7 +23,6 @@ private:
 	void setButtons();
 
 	QAction *m_actionOpen;
-	QAction *m_actionTrans;
 	QAction *m_actionClose;
 	QAction *m_actionQuit;
 	QAction *m_actionAbout;
@@ -32,4 +31,6 @@ private:
 	QStringList m_recentFilesList;*/
 
 	QString pathname;
+	QString pathnameNoExtension;
+	int slidesNum;
 };

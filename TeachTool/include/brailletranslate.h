@@ -8,14 +8,15 @@ class BrailleTranslate : public QWidget, public Ui::BrailleTranslateClass
 	Q_OBJECT
 
 public:
-	BrailleTranslate(QWidget *parent = nullptr);
+	BrailleTranslate(QWidget *parent, const QString &dir, int slidesNum);
 	~BrailleTranslate();
 private slots:
-	void onButtonSeclectFileTriggered();
-	void onButtonTranslateTriggered();
-
+	void displayPlainText(int index);
+	void onButtonTransformTriggered();
 private:
 	void connectButtons();
 
-	QString pathname;
+	QString exFileDir;
+
+	QList <QString> textBlocks;
 };

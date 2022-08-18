@@ -13,10 +13,73 @@
   <property name="windowTitle">
    <string>BrailleTranslate</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout_3">
+  <layout class="QGridLayout" name="gridLayout_2">
    <item row="0" column="0">
-    <layout class="QGridLayout" name="gridLayout_2">
-     <item row="2" column="0">
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="0" column="2">
+      <widget class="QLabel" name="labelPlainText">
+       <property name="text">
+        <string>明文</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label">
+       <property name="maximumSize">
+        <size>
+         <width>70</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>幻灯片页:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QComboBox" name="comboBoxSlideIndex">
+       <property name="maximumSize">
+        <size>
+         <width>50</width>
+         <height>16777215</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="2" rowspan="4">
+      <widget class="QPlainTextEdit" name="texteditPlain"/>
+     </item>
+     <item row="2" column="0" colspan="2">
+      <widget class="QPushButton" name="buttonSlideTransform">
+       <property name="maximumSize">
+        <size>
+         <width>128</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>转换</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0" colspan="2">
+      <widget class="QPushButton" name="buttonModify">
+       <property name="text">
+        <string>修正</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="2">
+      <widget class="QLabel" name="labelBrailleText">
+       <property name="text">
+        <string>盲文</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="2">
+      <widget class="QPlainTextEdit" name="texteditBraille"/>
+     </item>
+     <item row="4" column="0" rowspan="3" colspan="2">
       <spacer name="verticalSpacer">
        <property name="orientation">
         <enum>Qt::Vertical</enum>
@@ -28,60 +91,6 @@
         </size>
        </property>
       </spacer>
-     </item>
-     <item row="0" column="0">
-      <widget class="QPushButton" name="buttonSelectFile">
-       <property name="text">
-        <string>选择文件</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0">
-      <widget class="QPushButton" name="buttonTranslate">
-       <property name="text">
-        <string>翻译</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="1" rowspan="3">
-      <layout class="QGridLayout" name="gridLayout">
-       <item row="0" column="1">
-        <widget class="QLabel" name="labelPlainText">
-         <property name="text">
-          <string>明文</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="1">
-        <widget class="QPlainTextEdit" name="texteditBraille"/>
-       </item>
-       <item row="2" column="1">
-        <widget class="QLabel" name="labelBrailleText">
-         <property name="text">
-          <string>盲文</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QPlainTextEdit" name="texteditPlain"/>
-       </item>
-       <item row="1" column="0">
-        <spacer name="horizontalSpacer">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::Minimum</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>10</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-      </layout>
      </item>
     </layout>
    </item>

@@ -128,7 +128,7 @@
     <QtUic Include="teachtool.ui" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="brailletranslate.h" />
+    <QtMoc Include="include\brailletranslate.h" />
     <ClInclude Include="include\java_methods.h" />
     <ClInclude Include="include\stdafx.h" />
     <QtMoc Include="include\teachtool.h" />

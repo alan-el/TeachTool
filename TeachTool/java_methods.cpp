@@ -7,6 +7,8 @@ static JavaVM *jvm;                      // Pointer to the JVM (Java Virtual Mac
 static JNIEnv *env;                      // Pointer to native interface
 void JavaMethods::createJVM()
 {
+	if(jvm != NULL)
+		return;
 	//================== prepare loading of Java VM ============================
 	JavaVMInitArgs vm_args;                        // Initialization arguments
 	JavaVMOption* options = new JavaVMOption[1];   // JVM invocation options
@@ -32,12 +34,14 @@ void JavaMethods::createJVM()
 void JavaMethods::destroyJVM()
 {
 	jvm->DestroyJavaVM();
+	jvm = NULL;
 }
 
 
-void JavaMethods::pptTextExtractor(const char *pathname, bool isPptx)
+int JavaMethods::pptTextExtractor(const char *pathname, bool isPptx)
 {
 	// TO DO: add the code that will use JVM <============  (see next steps)
+	jint slides_num = 0;
 	jclass cls = env->FindClass("com/alanel/pptparse/PptTextExtraction");  // try to find the class
 	if(cls == nullptr) {
 		cerr << "ERROR: class not found !";
@@ -46,19 +50,20 @@ void JavaMethods::pptTextExtractor(const char *pathname, bool isPptx)
 	{   // if class found, continue
 		jmethodID mid;
 		if(!isPptx)
-			mid = env->GetStaticMethodID(cls, "PptSingleSlideTextExtractor", "(Ljava/lang/String;)V");  // find method
+			mid = env->GetStaticMethodID(cls, "PptSingleSlideTextExtractor", "(Ljava/lang/String;)I");  // find method
 		else
-			mid = env->GetStaticMethodID(cls, "PptxSingleSlideTextExtractor", "(Ljava/lang/String;)V");
+			mid = env->GetStaticMethodID(cls, "PptxSingleSlideTextExtractor", "(Ljava/lang/String;)I");
 
 		if(mid == nullptr)
 			cerr << "ERROR: method not found !" << endl;
 		else 
 		{
 			jstring str = env->NewStringUTF(pathname);
-			env->CallStaticVoidMethod(cls, mid, str);   // call the method with the arr as argument.
+			slides_num = env->CallStaticIntMethod(cls, mid, str);   // call the method with the arr as argument.
 			env->DeleteLocalRef(str);					// release the object
 		}
 	}
+	return slides_num;
 }
 
 void JavaMethods::pptPictExtractor(const char * pathname, bool isPptx)
