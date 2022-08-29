@@ -108,14 +108,6 @@ void TeachTool::createActions()
 	m_actionAbout = new QAction(tr("&About..."), this);
 
 	connect(m_actionOpen, SIGNAL(triggered()), SLOT(onActionOpenTriggered()));
-
-	/*
-	char dir[1000];
-	GetCurrentDirectory(1000, (LPWSTR)dir);*/
-	/*TODO
-	connect(m_actionClose, SIGNAL(triggered()), SLOT(onActionCloseTriggered()));
-	connect(m_actionQuit, SIGNAL(triggered()), qApp, SLOT(quit()));
-	connect(m_actionAbout, SIGNAL(triggered()), SLOT(onActionAboutTriggered()));*/
 }
 
 void TeachTool::createMenuBar()
