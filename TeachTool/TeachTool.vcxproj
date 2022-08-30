@@ -49,10 +49,12 @@
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="$(QtMsBuild)\Qt.props" />
+    <Import Project="..\..\..\..\opencv\vs_props\Opencv455d.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="$(QtMsBuild)\Qt.props" />
+    <Import Project="..\..\..\..\opencv\vs_props\opencv455.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
@@ -62,7 +64,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <ReferencePath>$(ReferencePath)</ReferencePath>
-    <IncludePath>D:\jdk-17.0.3.1\include\win32;D:\jdk-17.0.3.1\include;D:\Qt\5.14.2\msvc2017_64\include;$(IncludePath)</IncludePath>
+    <IncludePath>D:\MyProject\BlinderReader\software\Chapter5\liblouis\liblouis-3.22.0-win64\include\liblouis;D:\Qt_workspace\src\TeachTool\TeachTool\include;D:\jdk-17.0.3.1\include\win32;D:\jdk-17.0.3.1\include;D:\Qt\5.14.2\msvc2017_64\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Link>
@@ -71,7 +73,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Link>
-      <AdditionalDependencies>D:\jdk-17.0.3.1\lib\jvm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>D:\Qt_workspace\src\TeachTool\TeachTool\lib\liblouis\liblouis-20.lib;D:\jdk-17.0.3.1\lib\jvm.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
@@ -114,6 +116,9 @@
     <ClCompile Include="brailletranslate.cpp" />
     <ClCompile Include="java_methods.cpp" />
     <ClCompile Include="teachtool.cpp" />
+    <ClCompile Include="yolo.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
+    </ClCompile>
     <QtRcc Include="teachtool.qrc" />
     <ClCompile Include="main.cpp" />
     <None Include="TeachTool.ico" />
@@ -128,6 +133,7 @@
     <QtUic Include="teachtool.ui" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="yolo.h" />
     <QtMoc Include="include\brailletranslate.h" />
     <ClInclude Include="include\java_methods.h" />
     <ClInclude Include="include\stdafx.h" />

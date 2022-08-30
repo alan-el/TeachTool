@@ -49,6 +49,9 @@
     <ClCompile Include="brailletranslate.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="yolo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="teachtool.ui">
@@ -63,6 +66,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="yolo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
